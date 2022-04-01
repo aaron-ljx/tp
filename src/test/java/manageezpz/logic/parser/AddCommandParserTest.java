@@ -1,6 +1,6 @@
 package manageezpz.logic.parser;
 
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
 import static manageezpz.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static manageezpz.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static manageezpz.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
@@ -65,7 +65,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_compulsoryFieldMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEmployeeCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND, AddEmployeeCommand.MESSAGE_USAGE);
 
         // missing name prefix
         assertParseFailure(parser, VALID_NAME_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB,
@@ -104,6 +104,6 @@ public class AddCommandParserTest {
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB,
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEmployeeCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND, AddEmployeeCommand.MESSAGE_USAGE));
     }
 }

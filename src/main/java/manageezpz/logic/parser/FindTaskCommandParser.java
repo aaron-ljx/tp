@@ -1,6 +1,6 @@
 package manageezpz.logic.parser;
 
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_ASSIGNEES;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DATE;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DEADLINE;
@@ -52,7 +52,7 @@ public class FindTaskCommandParser implements Parser<FindTaskCommand> {
 
         if (hasError) {
             String finalMessage = errorMessage + FindTaskCommand.MESSAGE_USAGE;
-            String displayedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, finalMessage);
+            String displayedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND, finalMessage);
             throw new ParseException(displayedMessage);
         } else {
             return new FindTaskCommand(new TaskMultiplePredicate(

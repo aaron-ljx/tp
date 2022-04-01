@@ -20,13 +20,13 @@ import manageezpz.model.person.PersonMultiplePredicate;
 
 class FindEmployeeCommandParserTest {
     private static final String EMPTY_STRING = "";
-    private static final String NO_OPTION_MESSAGE = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+    private static final String NO_OPTION_MESSAGE = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND,
             FindEmployeeCommand.NO_OPTIONS + FindEmployeeCommand.MESSAGE_USAGE);
-    private static final String INVALID_NAME_MESSAGE = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+    private static final String INVALID_NAME_MESSAGE = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND,
             FindEmployeeCommand.INVALID_NAME + FindEmployeeCommand.MESSAGE_USAGE);
-    private static final String INVALID_PHONE_MESSAGE = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+    private static final String INVALID_PHONE_MESSAGE = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND,
             FindEmployeeCommand.INVALID_PHONE + FindEmployeeCommand.MESSAGE_USAGE);
-    private static final String INVALID_EMAIL_MESSAGE = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+    private static final String INVALID_EMAIL_MESSAGE = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND,
             FindEmployeeCommand.INVALID_EMAIL + FindEmployeeCommand.MESSAGE_USAGE);
 
     private FindEmployeeCommandParser parser;

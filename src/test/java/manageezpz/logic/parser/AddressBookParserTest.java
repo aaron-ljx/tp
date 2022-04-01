@@ -1,6 +1,6 @@
 package manageezpz.logic.parser;
 
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
 import static manageezpz.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static manageezpz.testutil.Assert.assertThrows;
@@ -58,8 +58,9 @@ public class AddressBookParserTest {
     public void parseCommand_edit() throws Exception {
         Person person = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        EditEmployeeCommand command = (EditEmployeeCommand) parser.parseCommand(EditEmployeeCommand.COMMAND_WORD + " "
-                + INDEX_FIRST.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+        EditEmployeeCommand command = (EditEmployeeCommand) parser.parseCommand(
+                EditEmployeeCommand.COMMAND_WORD + " " + INDEX_FIRST.getOneBased()
+                        + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
         assertEquals(new EditEmployeeCommand(INDEX_FIRST, descriptor), command);
     }
 
@@ -94,8 +95,8 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
+                HelpCommand.MESSAGE_USAGE), () -> parser.parseCommand(""));
     }
 
     @Test

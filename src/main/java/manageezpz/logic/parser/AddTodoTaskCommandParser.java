@@ -1,6 +1,7 @@
 package manageezpz.logic.parser;
 
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
+import static manageezpz.logic.commands.AddTodoTaskCommand.MESSAGE_USAGE;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 
 import java.util.stream.Stream;
@@ -22,13 +23,17 @@ public class AddTodoTaskCommandParser implements Parser<AddTodoTaskCommand> {
 
         if (!arePrefixesPresent(argMultimapTodo, PREFIX_DESCRIPTION)
                 || !argMultimapTodo.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddTodoTaskCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
+                    AddTodoTaskCommand.MESSAGE_USAGE));
         }
-        Description description = ParserUtil.parseDescription(argMultimapTodo.getValue(PREFIX_DESCRIPTION).get());
 
-        Todo todoTask = new Todo(description);
-
-        return new AddTodoTaskCommand(todoTask);
+        try {
+            Description desc = ParserUtil.parseDescription(argMultimapTodo.getValue(PREFIX_DESCRIPTION).get());
+            Todo todoTask = new Todo(desc);
+            return new AddTodoTaskCommand(todoTask);
+        } catch (ParseException pe) {
+            throw new ParseException(pe.getMessage() + "\n\n" + MESSAGE_USAGE);
+        }
     }
 
     /**

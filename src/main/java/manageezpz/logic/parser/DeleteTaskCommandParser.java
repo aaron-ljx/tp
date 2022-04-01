@@ -1,6 +1,6 @@
 package manageezpz.logic.parser;
 
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
 
 import manageezpz.commons.core.index.Index;
 import manageezpz.logic.commands.DeleteTaskCommand;
@@ -22,7 +22,7 @@ public class DeleteTaskCommandParser implements Parser<DeleteTaskCommand> {
             Index index = ParserUtil.parseIndex(args);
             return new DeleteTaskCommand(index);
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
                     DeleteTaskCommand.MESSAGE_USAGE), pe);
         }
     }

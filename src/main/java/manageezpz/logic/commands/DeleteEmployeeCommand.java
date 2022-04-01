@@ -43,7 +43,7 @@ public class DeleteEmployeeCommand extends Command {
         requireNonNull(model);
 
         List<Person> lastShownPersonList = model.getFilteredPersonList();
-        List<Task> lastShownTaskList = model.getFilteredTaskList();
+        List<Task> fullTaskList = model.getAddressBook().getTaskList();
 
         if (targetIndex.getZeroBased() >= lastShownPersonList.size()) {
             throw new CommandException(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, MESSAGE_USAGE));
@@ -51,7 +51,7 @@ public class DeleteEmployeeCommand extends Command {
 
         Person personToDelete = lastShownPersonList.get(targetIndex.getZeroBased());
 
-        List<Task> affectedTaskList = lastShownTaskList.stream()
+        List<Task> affectedTaskList = fullTaskList.stream()
                 .filter(task -> task.getAssignees().contains(personToDelete))
                 .collect(Collectors.toList());
 

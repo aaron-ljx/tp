@@ -1,6 +1,6 @@
 package manageezpz.logic.parser;
 
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
 import static manageezpz.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static manageezpz.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static manageezpz.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
@@ -34,7 +34,7 @@ import manageezpz.testutil.EditPersonDescriptorBuilder;
 public class EditCommandParserTest {
 
     private static final String MESSAGE_INVALID_FORMAT =
-            String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE);
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND, MESSAGE_USAGE);
 
     private EditEmployeeCommandParser parser = new EditEmployeeCommandParser();
 

@@ -1,7 +1,7 @@
 package manageezpz.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_AT_DATETIME;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DATE;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
@@ -33,14 +33,14 @@ public class EditTaskCommandParser implements Parser<EditTaskCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimap.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
                     EditTaskCommand.MESSAGE_USAGE), pe);
         }
 
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isEmpty()
                 && argMultimap.getValue(PREFIX_DATE).isEmpty()
                 && argMultimap.getValue(PREFIX_AT_DATETIME).isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
                     EditTaskCommand.MESSAGE_USAGE));
         }
 

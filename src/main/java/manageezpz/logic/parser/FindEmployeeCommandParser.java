@@ -39,7 +39,7 @@ public class FindEmployeeCommandParser implements Parser<FindEmployeeCommand> {
 
         if (hasError) {
             String finalMessage = errorMessage + FindEmployeeCommand.MESSAGE_USAGE;
-            String displayedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT, finalMessage);
+            String displayedMessage = String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND, finalMessage);
             throw new ParseException(displayedMessage);
         } else {
             PersonMultiplePredicate predicate = new PersonMultiplePredicate(names, phone, email);

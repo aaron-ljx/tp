@@ -1,7 +1,8 @@
 package manageezpz.logic.parser;
 
 import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_TIME_RANGE;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
+import static manageezpz.logic.commands.AddEventTaskCommand.MESSAGE_USAGE;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_AT_DATETIME;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 
@@ -27,28 +28,32 @@ public class AddEventTaskCommandParser implements Parser<AddEventTaskCommand> {
 
         if (!arePrefixesPresent(argMultimapEvent, PREFIX_DESCRIPTION, PREFIX_AT_DATETIME)
                 || !argMultimapEvent.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEventTaskCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND, MESSAGE_USAGE));
         }
 
-        Description desc = ParserUtil.parseDescription(argMultimapEvent.getValue(PREFIX_DESCRIPTION).get());
+        try {
+            Description desc = ParserUtil.parseDescription(argMultimapEvent.getValue(PREFIX_DESCRIPTION).get());
 
-        String atDateTime = argMultimapEvent.getValue(PREFIX_AT_DATETIME).get();
-        String[] parseAtDateTime = atDateTime.split(" ");
+            String atDateTime = argMultimapEvent.getValue(PREFIX_AT_DATETIME).get();
+            String[] parseAtDateTime = atDateTime.split(" ");
 
-        if (parseAtDateTime.length != 3) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddEventTaskCommand.MESSAGE_USAGE));
+            if (parseAtDateTime.length != 3) {
+                throw new ParseException(MESSAGE_INVALID_COMMAND_FORMAT);
+            }
+
+            Date date = ParserUtil.parseDate(parseAtDateTime[0]);
+            Time startTime = ParserUtil.parseTime(parseAtDateTime[1]);
+            Time endTime = ParserUtil.parseTime(parseAtDateTime[2]);
+
+            if (endTime.getParsedTime().compareTo(startTime.getParsedTime()) < 0) {
+                throw new ParseException(Time.MESSAGE_CONSTRAINTS);
+            }
+
+            Event event = new Event(desc, date, startTime, endTime);
+            return new AddEventTaskCommand(event);
+        } catch (ParseException pe) {
+            throw new ParseException(pe.getMessage() + "\n\n" + MESSAGE_USAGE);
         }
-
-        Date date = ParserUtil.parseDate(parseAtDateTime[0]);
-        Time startTime = ParserUtil.parseTime(parseAtDateTime[1]);
-        Time endTime = ParserUtil.parseTime(parseAtDateTime[2]);
-
-        if (endTime.getParsedTime().compareTo(startTime.getParsedTime()) < 0) {
-            throw new ParseException(MESSAGE_INVALID_TIME_RANGE);
-        }
-
-        Event event = new Event(desc, date, startTime, endTime);
-        return new AddEventTaskCommand(event);
     }
 
     /**

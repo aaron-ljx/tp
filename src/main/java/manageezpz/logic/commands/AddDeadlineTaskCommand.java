@@ -36,7 +36,7 @@ public class AddDeadlineTaskCommand extends Command {
 
         if (model.hasTask(toAdd)) {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_TASK,
-                    toAdd.getDescription()) + "\n" + MESSAGE_USAGE);
+                    toAdd.getDescription()) + MESSAGE_USAGE);
         }
 
         model.addDeadline(toAdd);

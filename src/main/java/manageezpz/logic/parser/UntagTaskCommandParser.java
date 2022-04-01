@@ -2,7 +2,7 @@ package manageezpz.logic.parser;
 
 import static manageezpz.commons.core.Messages.MESSAGE_EMPTY_NAME;
 import static manageezpz.commons.core.Messages.MESSAGE_EMPTY_TASK_NUMBER;
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_NAME;
 
 import java.util.stream.Stream;
@@ -28,12 +28,12 @@ public class UntagTaskCommandParser implements Parser<UntagTaskCommand> {
         try {
             index = ParserUtil.parseIndex(argMultimapTag.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
                     UntagTaskCommand.MESSAGE_USAGE), pe);
         }
 
         if (!arePrefixesPresent(argMultimapTag, PREFIX_NAME)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
                     UntagTaskCommand.MESSAGE_USAGE));
         }
 

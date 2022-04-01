@@ -2,7 +2,7 @@ package manageezpz.logic.parser;
 
 import static manageezpz.commons.core.Messages.MESSAGE_EMPTY_PRIORITY;
 import static manageezpz.commons.core.Messages.MESSAGE_EMPTY_TASK_NUMBER;
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static manageezpz.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT_BIND;
 import static manageezpz.commons.core.Messages.MESSAGE_INVALID_PRIORITY;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_PRIORITY;
 
@@ -31,12 +31,12 @@ public class TagTaskPriorityCommandParser implements Parser<TagTaskPriorityComma
         try {
             index = ParserUtil.parseIndex(argMultimapPriority.getPreamble());
         } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
                     TagTaskPriorityCommand.MESSAGE_USAGE), pe);
         }
 
         if (!arePrefixesPresent(argMultimapPriority, PREFIX_PRIORITY)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT_BIND,
                     TagTaskPriorityCommand.MESSAGE_USAGE));
         }
 

@@ -24,6 +24,17 @@
     -fx-opacity: 1;
 }
 
+.label-list-header-background {
+    -fx-background-color: #2a4158;
+}
+
+.label-list-header {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";

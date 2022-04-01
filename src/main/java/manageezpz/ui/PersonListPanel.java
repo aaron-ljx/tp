@@ -3,9 +3,14 @@ package manageezpz.ui;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import manageezpz.commons.core.LogsCenter;
@@ -30,9 +35,40 @@ public class PersonListPanel extends UiPart<Region> {
         personListView.setCellFactory(listView -> new PersonListViewCell());
     }
 
+    /**
+     * Handles mouse click event when user clicks an employee from the list.
+     */
     @FXML
     public void handleMouseClick(MouseEvent arg) {
-        System.out.println("clicked on " + personListView.getSelectionModel().getSelectedItem());
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+
+        // Creating a context menu
+        ContextMenu contextMenu = new ContextMenu();
+
+        // Creating the menu Items for the context menu
+        MenuItem copyNameItem = new MenuItem("Copy Name");
+        MenuItem copyPhoneItem = new MenuItem("Copy Phone Number");
+        MenuItem copyEmailItem = new MenuItem("Copy Email");
+        contextMenu.getItems().addAll(copyNameItem, copyPhoneItem, copyEmailItem);
+
+        // Adding the context menu to the button and the text field
+        personListView.setContextMenu(contextMenu);
+
+        copyNameItem.setOnAction((ActionEvent e) -> {
+            content.putString(personListView.getSelectionModel().getSelectedItem().getName().toString());
+            clipboard.setContent(content);
+        });
+
+        copyPhoneItem.setOnAction((ActionEvent e) -> {
+            content.putString(personListView.getSelectionModel().getSelectedItem().getPhone().toString());
+            clipboard.setContent(content);
+        });
+
+        copyEmailItem.setOnAction((ActionEvent e) -> {
+            content.putString(personListView.getSelectionModel().getSelectedItem().getEmail().toString());
+            clipboard.setContent(content);
+        });
     }
 
     /**
@@ -51,5 +87,4 @@ public class PersonListPanel extends UiPart<Region> {
             }
         }
     }
-
 }
