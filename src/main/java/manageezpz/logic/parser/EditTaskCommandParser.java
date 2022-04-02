@@ -9,10 +9,6 @@ import static manageezpz.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import manageezpz.commons.core.index.Index;
 import manageezpz.logic.commands.EditTaskCommand;
 import manageezpz.logic.parser.exceptions.ParseException;
-import manageezpz.model.task.Task;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Parses input arguments and creates a new EditTaskCommand object.
