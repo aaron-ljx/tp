@@ -32,7 +32,8 @@ public class AddEventTaskCommandParser implements Parser<AddEventTaskCommand> {
         }
 
         try {
-            Description desc = ParserUtil.parseDescription(argMultimapEvent.getValue(PREFIX_DESCRIPTION).get());
+            Description desc = ParserUtil.parseDescription(argMultimapEvent.getValue(PREFIX_DESCRIPTION)
+                    .orElse(""));
 
             String atDateTime = argMultimapEvent.getValue(PREFIX_AT_DATETIME).get();
             String[] parseAtDateTime = atDateTime.split(" ");

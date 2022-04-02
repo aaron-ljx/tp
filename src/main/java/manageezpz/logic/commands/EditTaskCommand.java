@@ -1,10 +1,6 @@
 package manageezpz.logic.commands;
 
-import static manageezpz.commons.core.Messages.MESSAGE_DUPLICATE_TASK;
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_TASK_TYPE;
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_TIME_FORMAT;
-import static manageezpz.commons.core.Messages.MESSAGE_INVALID_TIME_RANGE;
-import static manageezpz.commons.core.Messages.MESSAGE_TASK_UPDATE_SUCCESS;
+import static manageezpz.commons.core.Messages.*;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_AT_DATETIME;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DATE;
 import static manageezpz.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
@@ -112,6 +108,7 @@ public class EditTaskCommand extends Command {
 
     private Task updateTodo(Todo currentTask, String desc) throws ParseException {
         Todo updatedToDoTask = new Todo(currentTask);
+        desc = desc.replaceAll("\\p{C}", "").trim();
 
         if (!desc.isEmpty()) {
             Description newDesc = ParserUtil.parseDescription(desc);
@@ -123,6 +120,7 @@ public class EditTaskCommand extends Command {
 
     private Task updateDeadline(Deadline currentTask, String desc, String date, String time) throws ParseException {
         Deadline updatedDeadlineTask = new Deadline(currentTask);
+        desc = desc.replaceAll("\\p{C}", "").trim();
 
         if (!desc.isEmpty()) {
             Description newDesc = ParserUtil.parseDescription(desc);
@@ -144,6 +142,7 @@ public class EditTaskCommand extends Command {
 
     private Task updateEvent(Event currentTask, String desc, String date, String time) throws ParseException {
         Event updatedEventTask = new Event(currentTask);
+        desc = desc.replaceAll("\\p{C}", "").trim();
 
         if (!desc.isEmpty()) {
             Description newDesc = ParserUtil.parseDescription(desc);
