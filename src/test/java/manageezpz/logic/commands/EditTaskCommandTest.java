@@ -27,7 +27,7 @@ public class EditTaskCommandTest {
     private static final String UPDATED_START_TIME_STRING = "2000";
     private static final String UPDATED_END_TIME_STRING = "2100";
 
-    private static final String UPDATED_DATE_STRING = "2022-01-01";
+    private static final String UPDATED_DATE_STRING = "2022-02-02";
 
 
     @Test
@@ -79,7 +79,7 @@ public class EditTaskCommandTest {
         Date updatedDate = new Date(UPDATED_DATE_STRING);
         Event expectedEvent = new Event(updatedDesc, updatedDate,
                 currentTask.getStartTime(), currentTask.getEndTime());
-        Event actualEvent = (Event) EditTaskCommand.updateEvent(currentTask, UPDATED_DESC_STRING, VALID_DATE,
+        Event actualEvent = (Event) EditTaskCommand.updateEvent(currentTask, UPDATED_DESC_STRING, UPDATED_DATE_STRING,
                 "");
         assertEquals(expectedEvent.getDateTime(), actualEvent.getDateTime());
         assertEquals(expectedEvent.getDescription(), actualEvent.getDescription());
