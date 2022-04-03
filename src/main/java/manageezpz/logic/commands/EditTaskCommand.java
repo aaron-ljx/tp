@@ -112,6 +112,9 @@ public class EditTaskCommand extends Command {
 
     private Task updateTodo(Todo currentTask, String desc) throws ParseException {
         Todo updatedToDoTask = new Todo(currentTask);
+
+        // Solution to remove invisible characters below adapted from
+        // https://stackoverflow.com/questions/6198986/how-can-i-replace-non-printable-unicode-characters-in-java
         desc = desc.replaceAll("\\p{C}", "").trim();
 
         if (!desc.isEmpty()) {
@@ -124,6 +127,9 @@ public class EditTaskCommand extends Command {
 
     private Task updateDeadline(Deadline currentTask, String desc, String date, String time) throws ParseException {
         Deadline updatedDeadlineTask = new Deadline(currentTask);
+
+        // Solution to remove invisible characters below adapted from
+        // https://stackoverflow.com/questions/6198986/how-can-i-replace-non-printable-unicode-characters-in-java
         desc = desc.replaceAll("\\p{C}", "").trim();
 
         if (!desc.isEmpty()) {
@@ -146,6 +152,9 @@ public class EditTaskCommand extends Command {
 
     private Task updateEvent(Event currentTask, String desc, String date, String time) throws ParseException {
         Event updatedEventTask = new Event(currentTask);
+
+        // Solution to remove invisible characters below adapted from
+        // https://stackoverflow.com/questions/6198986/how-can-i-replace-non-printable-unicode-characters-in-java
         desc = desc.replaceAll("\\p{C}", "").trim();
 
         if (!desc.isEmpty()) {
