@@ -10,7 +10,7 @@ import manageezpz.model.Model;
 import manageezpz.model.ModelManager;
 import manageezpz.model.UserPrefs;
 
-public class ClearCommandTest {
+public class  ClearCommandTest {
 
     @Test
     public void execute_emptyAddressBook_success() {

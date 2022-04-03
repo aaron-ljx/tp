@@ -110,7 +110,7 @@ public class EditTaskCommand extends Command {
         }
     }
 
-    private Task updateTodo(Todo currentTask, String desc) throws ParseException {
+    public static Task updateTodo(Todo currentTask, String desc) throws ParseException {
         Todo updatedToDoTask = new Todo(currentTask);
 
         if (!desc.isEmpty()) {
@@ -121,7 +121,7 @@ public class EditTaskCommand extends Command {
         return updatedToDoTask;
     }
 
-    private Task updateDeadline(Deadline currentTask, String desc, String date, String time) throws ParseException {
+    public static Task updateDeadline(Deadline currentTask, String desc, String date, String time) throws ParseException {
         Deadline updatedDeadlineTask = new Deadline(currentTask);
 
         if (!desc.isEmpty()) {
@@ -142,7 +142,7 @@ public class EditTaskCommand extends Command {
         return updatedDeadlineTask;
     }
 
-    private Task updateEvent(Event currentTask, String desc, String date, String time) throws ParseException {
+    public static Task updateEvent(Event currentTask, String desc, String date, String time) throws ParseException {
         Event updatedEventTask = new Event(currentTask);
 
         if (!desc.isEmpty()) {
