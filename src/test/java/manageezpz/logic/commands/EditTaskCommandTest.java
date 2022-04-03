@@ -1,15 +1,5 @@
 package manageezpz.logic.commands;
 
-import manageezpz.logic.parser.exceptions.ParseException;
-import manageezpz.model.task.Date;
-import manageezpz.model.task.Deadline;
-import manageezpz.model.task.Description;
-import manageezpz.model.task.Event;
-import manageezpz.model.task.Time;
-import manageezpz.model.task.Todo;
-
-import org.junit.jupiter.api.Test;
-
 import static manageezpz.commons.core.Messages.MESSAGE_INVALID_TIME_RANGE;
 import static manageezpz.logic.commands.CommandTestUtil.DEADLINE_TASK;
 import static manageezpz.logic.commands.CommandTestUtil.EVENT_TASK;
@@ -18,6 +8,16 @@ import static manageezpz.logic.commands.CommandTestUtil.VALID_DATE;
 import static manageezpz.logic.commands.CommandTestUtil.VALID_TASK_DESCRIPTION;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+import manageezpz.logic.parser.exceptions.ParseException;
+import manageezpz.model.task.Date;
+import manageezpz.model.task.Deadline;
+import manageezpz.model.task.Description;
+import manageezpz.model.task.Event;
+import manageezpz.model.task.Time;
+import manageezpz.model.task.Todo;
 
 public class EditTaskCommandTest {
     private static final String UPDATED_DESC_STRING = "i have been updated";
@@ -50,7 +50,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void updateDeadlineDescAndTime_success() throws ParseException{
+    public void updateDeadlineDescAndTime_success() throws ParseException {
         Deadline currentTask = DEADLINE_TASK;
         Description updatedDesc = new Description(UPDATED_DESC_STRING);
         Time updatedTime = new Time(UPDATED_TIME_STRING);
@@ -73,7 +73,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void updateEventDescAndDate_success() throws ParseException{
+    public void updateEventDescAndDate_success() throws ParseException {
         Event currentTask = EVENT_TASK;
         Description updatedDesc = new Description(UPDATED_DESC_STRING);
         Date updatedDate = new Date(UPDATED_DATE_STRING);

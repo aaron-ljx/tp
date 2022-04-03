@@ -110,6 +110,14 @@ public class EditTaskCommand extends Command {
         }
     }
 
+    /**
+     * Updates a Todo task
+     * @param currentTask the task that is to be updated
+     * @param desc the description the user wants to update the task to
+     * @return a updated Todo task with the given parameter
+     * @throws ParseException
+     */
+
     public static Task updateTodo(Todo currentTask, String desc) throws ParseException {
         Todo updatedToDoTask = new Todo(currentTask);
 
@@ -121,7 +129,18 @@ public class EditTaskCommand extends Command {
         return updatedToDoTask;
     }
 
-    public static Task updateDeadline(Deadline currentTask, String desc, String date, String time) throws ParseException {
+    /**
+     * Updates a Deadline task
+     * @param currentTask the task that is to be updated
+     * @param desc the description the user wants to update the task to
+     * @param date the date the user wants to update the task to
+     * @param time the time the user wants to update the task to
+     * @return an updated Deadline task
+     * @throws ParseException
+     */
+
+    public static Task updateDeadline(Deadline currentTask, String desc, String date, String time)
+            throws ParseException {
         Deadline updatedDeadlineTask = new Deadline(currentTask);
 
         if (!desc.isEmpty()) {
@@ -141,6 +160,16 @@ public class EditTaskCommand extends Command {
 
         return updatedDeadlineTask;
     }
+
+    /**
+     * Updates a Event task
+     * @param currentTask the task that is to be updated
+     * @param desc the description the user wants to update the task to
+     * @param date the date the user wants to update the task to
+     * @param time the time the user wants to update the task to
+     * @return an updated Event task
+     * @throws ParseException
+     */
 
     public static Task updateEvent(Event currentTask, String desc, String date, String time) throws ParseException {
         Event updatedEventTask = new Event(currentTask);

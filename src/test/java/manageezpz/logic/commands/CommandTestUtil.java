@@ -19,7 +19,14 @@ import manageezpz.model.AddressBook;
 import manageezpz.model.Model;
 import manageezpz.model.person.Person;
 import manageezpz.model.person.PersonMultiplePredicate;
-import manageezpz.model.task.*;
+import manageezpz.model.task.Date;
+import manageezpz.model.task.Deadline;
+import manageezpz.model.task.Description;
+import manageezpz.model.task.Event;
+import manageezpz.model.task.Task;
+import manageezpz.model.task.TaskMultiplePredicate;
+import manageezpz.model.task.Time;
+import manageezpz.model.task.Todo;
 import manageezpz.testutil.EditPersonDescriptorBuilder;
 
 /**
