@@ -16,7 +16,6 @@ import static manageezpz.logic.commands.CommandTestUtil.EVENT_TASK;
 import static manageezpz.logic.commands.CommandTestUtil.TODO_TASK;
 import static manageezpz.logic.commands.CommandTestUtil.VALID_DATE;
 import static manageezpz.logic.commands.CommandTestUtil.VALID_TASK_DESCRIPTION;
-import static manageezpz.logic.commands.CommandTestUtil.VALID_TIME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -45,8 +44,8 @@ public class EditTaskCommandTest {
         Deadline currentTask = DEADLINE_TASK;
         Date updatedDate = new Date(UPDATED_DATE_STRING);
         Deadline expectedDeadline = new Deadline(currentTask.getDescription(), updatedDate, currentTask.getTime());
-        Deadline actualDeadline = (Deadline) EditTaskCommand.updateDeadline(currentTask, VALID_TASK_DESCRIPTION,
-                UPDATED_DATE_STRING, VALID_TIME);
+        Deadline actualDeadline = (Deadline) EditTaskCommand.updateDeadline(currentTask, "",
+                UPDATED_DATE_STRING, "");
         assertEquals(expectedDeadline.getDateTime(), actualDeadline.getDateTime());
     }
 
@@ -58,7 +57,7 @@ public class EditTaskCommandTest {
         Deadline expectedDeadline = new Deadline(updatedDesc, currentTask.getDate(),
                 updatedTime);
         Deadline actualDeadline = (Deadline) EditTaskCommand.updateDeadline(currentTask, UPDATED_DESC_STRING,
-                VALID_DATE, UPDATED_TIME_STRING);
+                "", UPDATED_TIME_STRING);
         assertEquals(expectedDeadline.getDateTime(), actualDeadline.getDateTime());
         assertEquals(expectedDeadline.getDescription(), actualDeadline.getDescription());
     }
@@ -68,7 +67,7 @@ public class EditTaskCommandTest {
         Event currentTask = EVENT_TASK;
         Event expectedEvent = new Event(currentTask.getDescription(), currentTask.getDate(),
                 new Time(UPDATED_START_TIME_STRING), new Time(UPDATED_END_TIME_STRING));
-        Event actualEvent = (Event) EditTaskCommand.updateEvent(currentTask, VALID_TASK_DESCRIPTION, VALID_DATE,
+        Event actualEvent = (Event) EditTaskCommand.updateEvent(currentTask, "", "",
                 UPDATED_START_AND_END_TIME_STRING);
         assertEquals(expectedEvent.getDateTime(), actualEvent.getDateTime());
     }
@@ -76,13 +75,12 @@ public class EditTaskCommandTest {
     @Test
     public void updateEventDescAndDate_success() throws ParseException{
         Event currentTask = EVENT_TASK;
-        String currentTime = currentTask.getStartTime().getTime() + " " + currentTask.getEndTime().getTime();
         Description updatedDesc = new Description(UPDATED_DESC_STRING);
         Date updatedDate = new Date(UPDATED_DATE_STRING);
         Event expectedEvent = new Event(updatedDesc, updatedDate,
                 currentTask.getStartTime(), currentTask.getEndTime());
         Event actualEvent = (Event) EditTaskCommand.updateEvent(currentTask, UPDATED_DESC_STRING, VALID_DATE,
-                currentTime);
+                "");
         assertEquals(expectedEvent.getDateTime(), actualEvent.getDateTime());
         assertEquals(expectedEvent.getDescription(), actualEvent.getDescription());
     }
