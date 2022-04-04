@@ -140,7 +140,8 @@ public class EditTaskCommand extends Command {
      * @throws ParseException
      */
 
-    public static Task updateDeadline(Deadline currentTask, String desc, String date, String time) throws ParseException {
+    public static Task updateDeadline(Deadline currentTask, String desc, String date, String time)
+            throws ParseException {
         Deadline updatedDeadlineTask = new Deadline(currentTask);
 
         if (!desc.isEmpty()) {
