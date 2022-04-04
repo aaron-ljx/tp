@@ -161,6 +161,7 @@ public class EditTaskCommand extends Command {
             if (newStartEndTimeStrParts.length != 2) {
                 throw new ParseException(MESSAGE_INVALID_TIME_FORMAT);
             }
+            System.out.println("hello");
 
             Time newStartTime = ParserUtil.parseTime(newStartEndTimeStrParts[0]);
             Time newEndTime = ParserUtil.parseTime(newStartEndTimeStrParts[1]);
