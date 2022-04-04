@@ -32,7 +32,7 @@ public class EditTaskCommandTest {
 
 
     @Test
-    public void updateTodo_success() throws ParseException {
+    public void updateTodo_updateDescription_success() throws ParseException {
         Description updatedDesc = new Description(UPDATED_DESC_STRING);
         Todo expectedTodo = new Todo(updatedDesc);
         Todo actualTodo = (Todo) EditTaskCommand.updateTodo(TODO_TASK, UPDATED_DESC_STRING);
@@ -41,7 +41,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void updateDeadlineDate_success() throws ParseException {
+    public void updateDeadline_updateDate_success() throws ParseException {
         Deadline currentTask = DEADLINE_TASK;
         Date updatedDate = new Date(UPDATED_DATE_STRING);
         Deadline expectedDeadline = new Deadline(currentTask.getDescription(), updatedDate, currentTask.getTime());
@@ -51,7 +51,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void updateDeadlineDescAndTime_success() throws ParseException {
+    public void updateDeadline_updateDescriptionAndTime_success() throws ParseException {
         Deadline currentTask = DEADLINE_TASK;
         Description updatedDesc = new Description(UPDATED_DESC_STRING);
         Time updatedTime = new Time(UPDATED_TIME_STRING);
@@ -64,7 +64,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void updateEventTime_success() throws ParseException {
+    public void updateEvent_updateTime_success() throws ParseException {
         Event currentTask = EVENT_TASK;
         Event expectedEvent = new Event(currentTask.getDescription(), currentTask.getDate(),
                 new Time(UPDATED_START_TIME_STRING), new Time(UPDATED_END_TIME_STRING));
@@ -74,7 +74,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void updateEventDescAndDate_success() throws ParseException {
+    public void updateEvent_updateDescriptionAndDate_success() throws ParseException {
         Event currentTask = EVENT_TASK;
         Description updatedDesc = new Description(UPDATED_DESC_STRING);
         Date updatedDate = new Date(UPDATED_DATE_STRING);
@@ -87,7 +87,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void invalidEventTimeRange_failure() {
+    public void updateEvent_invalidTimeRange_failure() {
         String updatedTimeString = "2200 2100";
         assertThrows(ParseException.class, () -> {
             EditTaskCommand.updateEvent(EVENT_TASK, VALID_TASK_DESCRIPTION, VALID_DATE,
@@ -96,7 +96,7 @@ public class EditTaskCommandTest {
     }
 
     @Test
-    public void invalidEventTimeFormat_failure() {
+    public void updateEvent_invalidTimeFormat_failure() {
         String updatedTimeString = "2200";
         assertThrows(ParseException.class, () -> {
             EditTaskCommand.updateEvent(EVENT_TASK, VALID_TASK_DESCRIPTION, VALID_DATE,
