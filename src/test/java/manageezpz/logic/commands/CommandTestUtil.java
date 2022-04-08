@@ -19,8 +19,14 @@ import manageezpz.model.AddressBook;
 import manageezpz.model.Model;
 import manageezpz.model.person.Person;
 import manageezpz.model.person.PersonMultiplePredicate;
+import manageezpz.model.task.Date;
+import manageezpz.model.task.Deadline;
+import manageezpz.model.task.Description;
+import manageezpz.model.task.Event;
 import manageezpz.model.task.Task;
 import manageezpz.model.task.TaskMultiplePredicate;
+import manageezpz.model.task.Time;
+import manageezpz.model.task.Todo;
 import manageezpz.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -56,12 +62,19 @@ public class CommandTestUtil {
     public static final String VALID_TASK_DESCRIPTION = "get a drink";
     public static final List<String> LIST_DESCRIPTIONS = List.of(VALID_TASK_DESCRIPTION.split(" "));
     public static final String VALID_DATE = "2022-01-01"; // Date are in YYYY-MM-DD
+    public static final String VALID_TIME = "1700"; // Time are in HHmm
+    public static final String VALID_START_TIME = "1000";
+    public static final String VALID_END_TIME = "1200";
     public static final String VALID_PRIORITY = "LOW"; // Valid priority are none, low, medium, high
     public static final String INVALID_PRIORITY = "H1GH";
     public static final String VALID_BOOLEAN = "true";
     public static final String INVALID_BOOLEAN = "t";
 
     public static final String INVALID_DATE = "2022 01 01";
+
+    public static final Todo TODO_TASK;
+    public static final Event EVENT_TASK;
+    public static final Deadline DEADLINE_TASK;
 
     // Multiple arguments not allowed for list command
     public static final String INVALID_LIST_MULTIPLE_ARGUMENTS = " " + PREFIX_TODO + " " + PREFIX_EVENT;
@@ -73,6 +86,12 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
                 .build();
+
+        TODO_TASK = new Todo(new Description(VALID_TASK_DESCRIPTION));
+        EVENT_TASK = new Event(new Description(VALID_TASK_DESCRIPTION), new Date(VALID_DATE),
+                new Time(VALID_START_TIME), new Time(VALID_END_TIME));
+        DEADLINE_TASK = new Deadline(new Description(VALID_TASK_DESCRIPTION), new Date(VALID_DATE),
+                new Time(VALID_TIME));
     }
 
     /**
