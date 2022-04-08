@@ -163,7 +163,7 @@ public class EditTaskCommand extends Command {
      * @return Updated Todo task
      */
 
-    public static Task updateTodo(Todo currentTask, String desc) throws ParseException {
+    public Task updateTodo(Todo currentTask, String desc) throws ParseException {
         Todo updatedToDoTask = new Todo(currentTask);
 
         if (prefixStatusHash.get("date") || prefixStatusHash.get("datetime")) {
@@ -186,7 +186,7 @@ public class EditTaskCommand extends Command {
      * @return Updated Deadline task
      */
 
-    public static Task updateDeadline(Deadline currentTask, String desc, String date, String time)
+    public Task updateDeadline(Deadline currentTask, String desc, String date, String time)
             throws ParseException {
         Deadline updatedDeadlineTask = new Deadline(currentTask);
 
@@ -222,7 +222,7 @@ public class EditTaskCommand extends Command {
      * @return Updated Event task
      */
 
-    public static Task updateEvent(Event currentTask, String desc, String date, String time) throws ParseException {
+    public Task updateEvent(Event currentTask, String desc, String date, String time) throws ParseException {
         Event updatedEventTask = new Event(currentTask);
 
         if (!ensureFormatCompliance(prefixStatusHash, desc, date, time)) {

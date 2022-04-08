@@ -22,6 +22,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_TASK_TYPE = "Task is an invalid Task Type!";
     public static final String MESSAGE_INVALID_TIME_RANGE =
             "The time range you provided is invalid as end time should be after start time!";
+    public static final String MESSAGE_INVALID_TIME_FORMAT = "Invalid time format!";
 
     public static final String MESSAGE_DUPLICATE_TASK = "Task with the same description '%1$s' already exists! \n\n";
 
